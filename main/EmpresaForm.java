@@ -46,15 +46,21 @@ public class EmpresaForm extends JFrame {
         JButton guardarButton = new JButton("Guardar");
         add(guardarButton);
 
-        guardarButton.addActionListener(e ->{
-            empresa = new Empresa(0, "", "", "", "", "", "");
+        guardarButton.addActionListener(e -> guardarEmpresa());
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 
+    }
+
+    Private void guardarEmpresa() {
+            empresa = new Empresa(0, "", "", "", "", "", "");
             empresa.setNombre(nombreField.getText());
             empresa.setDireccion(direccionField.getText());
             empresa.setTelefono(telefonoField.getText());
             empresa.setEmail(emailField.getText());
             empresa.setRfc(rfcField.getText());
             empresa.setLogoPath(logoPathField.getText());
+
+        
 
             try (Connection conexion = Factura.conectar()){
                 if (empresa.guardarEmpresa(conexion)){
