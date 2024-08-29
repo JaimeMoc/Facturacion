@@ -1,9 +1,11 @@
 //Jaime Alberto Suarez Moctezuma.
-// Clase principal del sistema de facturación. 
+// Clase principal del sistema de facturación.
 
 // Importacion de librerias.
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 // Clase Factura
 public class Factura{
@@ -28,5 +30,15 @@ public class Factura{
         JButton empresaButton = new JButton("Empresa");
         JButton productoButton = new JButton("Producto");
         JButton clienteButton = new JButton("Cliente");
+
+        frame.add(empresaButton);
+        frame.add(productoButton);
+        frame.add(clienteButton);
+
+        empresaButton.addActionListener(e -> new EmpresaForm().setVisible(true));
+        productoButton.addActionListener(e -> new ProductoForm().setVisible(true));
+        clienteButton.addActionListener(e -> new ClienteForm().setVisible(true));
+
+        frame.setVisible(true);
     }
 }
